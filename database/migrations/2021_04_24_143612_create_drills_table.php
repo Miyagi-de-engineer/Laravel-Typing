@@ -16,6 +16,7 @@ class CreateDrillsTable extends Migration
         Schema::create('drills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('category');
             $table->string('problem0');
             $table->string('problem1');
             $table->string('problem2');
