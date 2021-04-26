@@ -10,7 +10,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="card-title">{{ $drill->title }}</h3>
-                            <a href="#" class="btn btn-primary">
+                            <a href="{{ route('drills.edit',$drill->id) }}" class="btn btn-primary">
                                 {{ __('Go Practice') }}
                             </a>
                         </div>
