@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Drill Register') }}</div>
 
                     <div class="card-body">
-                        <form action="{{ route('drills.new')}}" method="post">
+                        <form action="{{ route('drills.create')}}" method="post">
                             @csrf
 
                             <div class="form-group row">
@@ -17,15 +17,25 @@
                                 </label>
                                 <div class="col-md-6">
                                     <input type="text" id="title" class="form-control @error('title')is-invalid @enderror" name="title" value="{{ old('title')}}" autocomplete="title" autofocus>
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="category" class="col-md-4 col-form-label text-md-right">
+                                <label for="category_name" class="col-md-4 col-form-label text-md-right">
                                     {{ __('Category') }}
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" id="category" class="form-control @error('category')is-invalid @enderror" name="category" value="{{ old('category')}}" autocomplete="category" autofocus>
+                                    <input type="text" id="category_name" class="form-control @error('category_name')is-invalid @enderror" name="category_name" value="{{ old('category_name')}}" autocomplete="category_name" autofocus>
+                                    @error('category_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 

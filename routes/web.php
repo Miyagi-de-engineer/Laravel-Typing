@@ -22,4 +22,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/drills/new', [DrillsController::class, 'new'])->name('drills.new');
+Route::post('/drills', [DrillsController::class, 'create'])->name('drills.create');
