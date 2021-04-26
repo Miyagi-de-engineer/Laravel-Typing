@@ -43,4 +43,29 @@ class DrillsController extends Controller
 
         return redirect('/drills/new')->with('flash_message', __('Registered'));
     }
+
+    public function edit($id)
+    {
+
+        // IDが数値なのかをチェックする　※無駄なDBへの問い合わせをなくすため
+        if (!ctype_digit($id)) {
+            return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        $drill = Drill::find($id);
+        return view('drills.edit', ['drill' => $drill]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // IDが数値なのかをチェックする　※無駄なDBへの問い合わせをなくすため
+        if (!ctype_digit($id)) {
+            return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        $drill = Drill::find($id);
+        $drill->fill($request->all())->save();
+
+        return redirect('/drills')->with('flash_message', __('Update Complete.'));
+    }
 }
