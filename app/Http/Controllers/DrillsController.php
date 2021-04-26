@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class DrillsController extends Controller
 {
+
+    public function index()
+    {
+        $drills = Drill::all();
+        return view('drills.index', ['drills' => $drills]);
+    }
+
     public function new()
     {
         return view('drills.new');
