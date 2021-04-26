@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -74,6 +74,12 @@
                 </div>
             </div>
         </nav>
+
+        @if (session('flash_message'))
+            <div class="alert alert-primary text-center" role="alert">
+                {{ session('flash_message') }}
+            </div>
+        @endif
 
         <main class="py-4">
             @yield('content')
