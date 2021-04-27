@@ -68,4 +68,16 @@ class DrillsController extends Controller
 
         return redirect('/drills')->with('flash_message', __('Update Complete.'));
     }
+
+    public function delete($id)
+    {
+        // IDが数値なのかをチェックする　※無駄なDBへの問い合わせをなくすため
+        if (!ctype_digit($id)) {
+            return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        Drill::find($id)->delete();
+
+        return redirect('/drills')->with('flash_message', __('Deleted'));
+    }
 }
