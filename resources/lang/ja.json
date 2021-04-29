@@ -7,6 +7,7 @@
     "Category":"カテゴリー",
     "Problem":"問題",
     "Register":"登録する",
+    "Practice":"練習問題",
 
     "Registered":"登録しました！",
     "Update Complete.":"更新が完了しました！",
@@ -15,6 +16,7 @@
     "Go Practice":"練習する",
     "Go Edit":"編集する",
     "Go Delete":"削除する",
+    "Go New":"問題作成",
 
     "Invalid operation was performed.":"不正な操作が行われました"
 }
