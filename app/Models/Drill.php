@@ -23,4 +23,9 @@ class Drill extends Model
         'problem8',
         'problem9',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

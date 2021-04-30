@@ -22,6 +22,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function drills()
+    {
+        return $this->hasMany('App\Models\Drill');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

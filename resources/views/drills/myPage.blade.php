@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>{{ __('Drill List')}}</h2>
+        <h2>{{ __('MyPage')}}</h2>
 
         <div class="row">
             @foreach ($drills as $drill)
@@ -23,9 +23,7 @@
                                             {{ $drill->created_at->format('Y/m/d')}}
                                         </div>
                                     </div>
-
-                                    @if (Auth::id() === $drill->user->id)
-                                        <!-- Dropdown -->
+                                    <!-- Dropdown -->
                                     <div class="ml-auto card-text">
                                         <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +42,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Dropdown -->
 
                                     <!-- modal -->
                                     <div id="modal-delete-{{ $drill->id }}" class="modal fade" tabindex="-1" role="dialog">
@@ -69,8 +66,6 @@
                                         </div>
                                     </div>
                                     <!-- modal -->
-                                    @endif
-
                                 </div>
 
 
