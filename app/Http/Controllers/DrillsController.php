@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Drill;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DrillsController extends Controller
 {
 
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Drill::class, 'drill');
+    // }
+
     public function index()
     {
-        $drills = Drill::all();
+        $drills = Drill::all()->sortByDesc('created_at');
         return view('drills.index', ['drills' => $drills]);
     }
 
@@ -39,7 +46,7 @@ class DrillsController extends Controller
 
         $drill = new Drill;
 
-        $drill->fill($request->all())->save();
+        Auth::user()->drills()->save($drill->fill($request->all()));
 
         return redirect('/')->with('flash_message', __('Registered'));
     }
@@ -64,7 +71,7 @@ class DrillsController extends Controller
             return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $drill = Drill::find($id);
+        $drill = Auth::user()->drills()->find($id);
         return view('drills.edit', ['drill' => $drill]);
     }
 
@@ -75,7 +82,8 @@ class DrillsController extends Controller
             return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $drill = Drill::find($id);
+        $drill =
+            Auth::user()->drills()->find($id);
         $drill->fill($request->all())->save();
 
         return redirect('/')->with('flash_message', __('Update Complete.'));
@@ -88,8 +96,14 @@ class DrillsController extends Controller
             return redirect('drills/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        Drill::find($id)->delete();
+        Auth::user()->drills()->find($id)->delete();
 
         return redirect('/')->with('flash_message', __('Deleted'));
+    }
+
+    public function myPage()
+    {
+        $drills = Auth::user()->drills()->get();
+        return view('drills.myPage', compact('drills'));
     }
 }

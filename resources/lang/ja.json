@@ -8,6 +8,15 @@
     "Problem":"問題",
     "Register":"登録する",
     "Practice":"練習問題",
+    "MyPage":"マイページ",
+    "Name":"ユーザー名",
+    "E-Mail Address":"メールアドレス",
+    "Password":"パスワード",
+    "Confirm Password":"パスワード再入力",
+    "Remember Me":"ログイン状態を保持",
+    "Login":"ログイン",
+    "Forgot Your Password?":"パスワードを忘れた方はこちら",
+
 
     "Registered":"登録しました！",
     "Update Complete.":"更新が完了しました！",
